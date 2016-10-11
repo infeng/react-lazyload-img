@@ -7,20 +7,35 @@ const entry = './src/index.tsx';
 
 module.exports = function (webpackConfig) {
 
+  webpackConfig.module.loaders.unshift({
+    test: /\.(tsx|jsx?)$/,
+    loader: 'es3ify-loader',
+  });
+
   webpackConfig.entry = Object.assign({}, webpackConfig.entry, {
     ['index.min']: entry,
   });
+
+  webpackConfig.externals = {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+    },
+  };
 
   webpackConfig.output = {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].js',
     library: packageName,
     libraryTarget: 'umd',
-  };
-
-  webpackConfig.externals = {
-    react: "react",
-    'react-dom': "ReactDOM",
   };
 
   webpackConfig.plugins.some(function (plugin, i) {
