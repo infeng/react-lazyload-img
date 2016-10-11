@@ -1,0 +1,46 @@
+{
+  "name": "react-lazyload-img",
+  "version": "1.0.0",
+  "description": "lazyload image component",
+  "main": "dist/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "dora --port 8002 --plugins \"webpack,webpack-hmr,browser-history?index=/src/demo/index.html\"",
+    "build": "atool-build --config webpack.config.prop.js && gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/infeng/react-lazyload-img.git"
+  },
+  "bugs": {
+    "url": "https://github.com/infeng/react-lazyload-img/issues"
+  },
+  "keywords": [
+    "react",
+    "image",
+    "lazyload"
+  ],
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "author": "infeng",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^0.14.39",
+    "@types/react-dom": "^0.14.17",
+    "atool-build": "^0.8.1",
+    "dora": "^0.4.3",
+    "dora-plugin-browser-history": "^0.2.0",
+    "dora-plugin-webpack": "^0.8.1",
+    "dora-plugin-webpack-hmr": "^0.2.1",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.0.2",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.3"
+  }
+}
