@@ -2,10 +2,16 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import splitObject from './util/splitObject';
 
+interface OffsetDecorator {
+  min?: number;
+  max?: number;
+}
+
 export interface LazyLoadImgProps {
   src: string;
   placeholder: string;
-  [key: string]: string;
+  offset?: OffsetDecorator,
+  [key: string]: any;
 }
 
 export interface LazyLoadImgState {
@@ -19,6 +25,10 @@ export interface LazyLoadImgState {
 export default class LazyLoadImg extends React.Component<LazyLoadImgProps, LazyLoadImgState> {
   static defaultProps = {
     placeholder: '',
+    offset: {
+      min: 0,
+      max: 0,
+    },
   };
 
   constructor() {
@@ -31,17 +41,19 @@ export default class LazyLoadImg extends React.Component<LazyLoadImgProps, LazyL
         height: window.innerHeight,
       },
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', this.handleScroll.bind(this), false);
-    window.addEventListener('resize', this.handleScroll, false);
+    document.addEventListener('scroll', this.handleScroll, false);
+    document.addEventListener('resize', this.handleScroll, false);
     this.checkVisible();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleScroll);
+    document.removeEventListener('scroll', this.handleScroll);
+    document.removeEventListener('resize', this.handleScroll);
   }
 
   componentDidUpdate(prevProps, prevState: LazyLoadImgState) {
@@ -52,7 +64,7 @@ export default class LazyLoadImg extends React.Component<LazyLoadImgProps, LazyL
 
   checkVisible() {
     let ele = ReactDOM.findDOMNode(this.refs['img']) as HTMLElement;
-    let top = ele.offsetTop;
+    let top = ele['y'];
     let height = ele.offsetHeight;
 
     let min = this.state.viewport.top;
@@ -60,7 +72,7 @@ export default class LazyLoadImg extends React.Component<LazyLoadImgProps, LazyL
 
     let offset = height * 0.2;
 
-    if ((min <= (top + height - offset)) && top <= (max - offset)) {
+    if (((min + this.props.offset.min || 0) <= (top + height - offset)) && top <= (max + this.props.offset.max || 0 - offset)) {
       this.setState({
         viewport: this.state.viewport,
         visible: true,
