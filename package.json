@@ -1,6 +1,6 @@
 {
   "name": "react-lazyload-img",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "lazyload image component",
   "main": "dist/index",
   "scripts": {
