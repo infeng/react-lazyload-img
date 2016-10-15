@@ -24,23 +24,28 @@
     "dist",
     "lib"
   ],
+  "types": "lib/index.d.ts",
   "author": "infeng",
   "license": "MIT",
   "devDependencies": {
     "@types/react": "^0.14.39",
     "@types/react-dom": "^0.14.17",
     "atool-build": "^0.8.1",
+    "babel-plugin-transform-runtime": "^6.15.0",
     "dora": "^0.4.3",
     "dora-plugin-browser-history": "^0.2.0",
     "dora-plugin-webpack": "^0.8.1",
     "dora-plugin-webpack-hmr": "^0.2.1",
     "es3ify-loader": "^0.2.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
     "gulp-typescript": "^3.0.2",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.22.0",
+    "merge2": "^1.0.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "through2": "^2.0.1",
     "tslint": "^3.15.1",
     "typescript": "^2.0.3"
   }

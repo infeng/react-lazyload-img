@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import splitObject from './util/splitObject';
 
-interface OffsetDecorator {
+export interface OffsetDecorator {
   min?: number;
   max?: number;
 }
@@ -15,8 +15,8 @@ export interface LazyLoadImgProps {
 }
 
 export interface LazyLoadImgState {
-  visible: boolean;
-  viewport: {
+  visible?: boolean;
+  viewport?: {
     top: number,
     height: number,
   },
