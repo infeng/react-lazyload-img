@@ -4,8 +4,8 @@ lazyload image component
 
 ## Installation
 
-```
-$ npm install react-lazyload-img --save
+```bash
+npm install react-lazyload-img --save
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ class App extends React.Component<any, any> {
     <div>
       <LazyLoadImg
       src=""
-      placeholder=""       
+      placeholder=""
       />
     </div>
   }
@@ -33,7 +33,7 @@ class App extends React.Component<any, any> {
 | src         | string       |         | img source                  | false |
 | placeholder | string       |         | when img unload, img`s source is placeholder | false |
 | offset      | {{ min?: number, max?: number }} | { min: 0, max: 0 } | viewport offset | false |
-
+| img tag attributes | any   | - | img tag attributes | false |
 
 ## License
 
